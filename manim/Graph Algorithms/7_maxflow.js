@@ -339,7 +339,7 @@ const Graph07 = function (s) {
     };
     let tnr;
     s.preload = function () {
-        tnr = s.loadFont('../lib/font/times.ttf');
+        tnr = s.loadFont('https://raw.githubusercontent.com/egeozgul/VizGen/refs/heads/main/manim/lib/font/times.ttf');
     };
     s.setup = function () {
         setup2D(s);
