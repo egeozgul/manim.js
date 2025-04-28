@@ -508,7 +508,7 @@ const Chap1Part1 = function (s) {
     let comic;
 
     s.preload = function () {
-        comic = s.loadFont('../lib/font/comic.ttf');
+        comic = s.loadFont('https://raw.githubusercontent.com/egeozgul/manim.js/refs/heads/main/manim/lib/font/comic.ttf');
     };
 
     s.setup = function () {
@@ -875,7 +875,7 @@ function Chap1Part2(s) {
     let brain;
 
     s.preload = function() {
-        font = s.loadFont('../lib/font/comic.ttf');
+        font = s.loadFont('https://raw.githubusercontent.com/egeozgul/manim.js/refs/heads/main/manim/lib/font/comic.ttf');
     };
 
     s.setup = function() {
@@ -929,7 +929,7 @@ const Chap1Credits = function (s) {
     let comic;
 
     s.preload = function () {
-        comic = s.loadFont('../lib/font/comic.ttf');
+        comic = s.loadFont('https://raw.githubusercontent.com/egeozgul/manim.js/refs/heads/main/manim/lib/font/comic.ttf');
     };
 
     s.setup = function() {
