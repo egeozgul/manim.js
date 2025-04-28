@@ -19,6 +19,3 @@ This directory contains the modified version of the Manim.js library originally 
 [Demo_7 maxflow](https://egeozgul.github.io/manim.js/manim/Graph%20Algorithms/demo_7.html)
 
 [Demo_8 cut](https://egeozgul.github.io/manim.js/manim/Graph%20Algorithms/demo_8.html)
-
-[Demo_9 scc](https://egeozgul.github.io/manim.js/manim/Graph%20Algorithms/demo_9.html)
-
