@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Graph Algorithms</title>
+    <title>Graph Algo</title>
 
     <!-- include external libraries -->
     <script type="text/javascript" src="../lib/p5/p5.min.js"></script>
@@ -15,159 +15,11 @@
     <script type="text/javascript" src="../src/utils.js"></script>
     <script type="text/javascript" src="../src/brain.js"></script>
 
-    <!-- include all algorithm scripts -->
-    <script type="text/javascript" src="graph.js"></script>
-    <script type="text/javascript" src="0_dfs.js"></script>
-    <script type="text/javascript" src="1_bfs.js"></script>
-    <script type="text/javascript" src="2_prim.js"></script>
-    <script type="text/javascript" src="3_kruskal.js"></script>
-    <script type="text/javascript" src="4_dijkstra.js"></script>
-    <script type="text/javascript" src="5_topsort.js"></script>
-    <script type="text/javascript" src="6_floyd.js"></script>
-    <script type="text/javascript" src="7_maxflow.js"></script>
-    <script type="text/javascript" src="8_cut.js"></script>
-    <script type="text/javascript" src="9_scc.js"></script>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        #canvas-container {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .active {
-            background-color: #2196F3;
-        }
-        #algorithm-description {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f5f5f5;
-            border-radius: 4px;
-        }
-    </style>
+    <!-- include the chapter -->
+    <script type="text/javascript" src= "graph.js"></script>
+    <script type="text/javascript" src= "3_kruskal.js"></script>
 </head>
 <body>
-    <h1>Graph Algorithms Visualizer</h1>
-    
-    <div class="button-container">
-        <button id="dfs-btn" onclick="loadAlgorithm('dfs')">DFS</button>
-        <button id="bfs-btn" onclick="loadAlgorithm('bfs')">BFS</button>
-        <button id="prim-btn" onclick="loadAlgorithm('prim')">Prim's MST</button>
-        <button id="kruskal-btn" onclick="loadAlgorithm('kruskal')">Kruskal's MST</button>
-        <button id="dijkstra-btn" onclick="loadAlgorithm('dijkstra')">Dijkstra's</button>
-        <button id="topsort-btn" onclick="loadAlgorithm('topsort')">Topological Sort</button>
-        <button id="floyd-btn" onclick="loadAlgorithm('floyd')">Floyd-Warshall</button>
-        <button id="maxflow-btn" onclick="loadAlgorithm('maxflow')">Max Flow</button>
-        <button id="cut-btn" onclick="loadAlgorithm('cut')">Min Cut</button>
-        <button id="scc-btn" onclick="loadAlgorithm('scc')">Strongly Connected Components</button>
-    </div>
 
-    <div id="algorithm-description">
-        <h3>Algorithm Description</h3>
-        <p id="algo-desc-text">Select an algorithm to see its description and visualization.</p>
-    </div>
-
-    <div id="canvas-container"></div>
-
-    <script>
-        // Current active algorithm instance
-        let currentSketch = null;
-        let currentInstance = null;
-        
-        // Description of algorithms
-        const algorithmDescriptions = {
-            'dfs': 'Depth-First Search (DFS) is an algorithm for traversing or searching tree or graph data structures. It starts at a selected node and explores as far as possible along each branch before backtracking.',
-            'bfs': 'Breadth-First Search (BFS) is an algorithm for traversing or searching tree or graph data structures. It starts at a selected node and explores all neighbors at the present depth before moving on to nodes at the next depth level.',
-            'prim': 'Prim\'s algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph, meaning it finds a subset of the edges that forms a tree that includes every vertex, where the total weight is minimized.',
-            'kruskal': 'Kruskal\'s algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. It finds a subset of the edges that forms a tree that includes every vertex, while minimizing the total weight.',
-            'dijkstra': 'Dijkstra\'s algorithm is an algorithm for finding the shortest paths between nodes in a graph. It picks the unvisited vertex with the lowest distance, calculates the distance through it to each unvisited neighbor, and updates the neighbor\'s distance if smaller.',
-            'topsort': 'Topological Sort is an algorithm that linearly orders the vertices of a directed acyclic graph (DAG) such that for every directed edge (u,v), vertex u comes before v in the ordering.',
-            'floyd': 'Floyd-Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but no negative cycles).',
-            'maxflow': 'Maximum Flow algorithms calculate the maximum flow in a flow network, which is the maximum amount of flow that can be sent from the source to the sink.',
-            'cut': 'Minimum Cut algorithm finds a cut of minimum capacity in a flow network that separates the source and the sink.',
-            'scc': 'Strongly Connected Components algorithm finds the maximal strongly connected subgraphs in a directed graph, where a strongly connected component is a subgraph in which there is a path from each vertex to every other vertex.'
-        };
-
-        // Function to clean up current sketch
-        function cleanupCurrentSketch() {
-            if (currentSketch) {
-                // Remove the existing canvas
-                const canvasElement = document.querySelector('#canvas-container canvas');
-                if (canvasElement) {
-                    canvasElement.remove();
-                }
-                
-                // Remove active class from all buttons
-                document.querySelectorAll('.button-container button').forEach(button => {
-                    button.classList.remove('active');
-                });
-                
-                currentSketch = null;
-                currentInstance = null;
-            }
-        }
-
-        // Load and initialize the selected algorithm
-        function loadAlgorithm(algoName) {
-            // Clean up current sketch
-            cleanupCurrentSketch();
-            
-            // Update description
-            document.getElementById('algo-desc-text').textContent = algorithmDescriptions[algoName];
-            
-            // Add active class to the clicked button
-            document.getElementById(`${algoName}-btn`).classList.add('active');
-            
-            // Map algorithm name to script number
-            const algoMap = {
-                'dfs': 0,
-                'bfs': 1,
-                'prim': 2,
-                'kruskal': 3,
-                'dijkstra': 4,
-                'topsort': 5,
-                'floyd': 6,
-                'maxflow': 7,
-                'cut': 8,
-                'scc': 9
-            };
-            
-            // Create new sketch for the selected algorithm
-            currentSketch = new p5(window[`sketch${algoMap[algoName]}`], 'canvas-container');
-        }
-
-        // Initialize with Kruskal's algorithm (since it was in the original HTML)
-        window.onload = function() {
-            loadAlgorithm('kruskal');
-        };
-    </script>
 </body>
 </html>
