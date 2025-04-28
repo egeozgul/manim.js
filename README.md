@@ -1,6 +1,6 @@
 This directory contains the modified version of the Manim.js library originally located at https://github.com/JazonJiao/Manim.js/
 
-Click on the follwoing links to run graph algortihm demo scripts: 
+Click on the follwoing links to run algortihm demo scripts: 
 
 [Demo_0 dfs](https://egeozgul.github.io/manim.js/manim/Graph%20Algorithms/demo_0.html)
 
