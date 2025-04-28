@@ -32,7 +32,7 @@ const Scene21 = function(s) {
     let txt = [];
     let emps = [];
     s.preload = function() {
-        times = s.loadFont('../lib/font/times.ttf');
+        times = s.loadFont('https://raw.githubusercontent.com/egeozgul/manim.js/refs/heads/main/manim/lib/font/times.ttf');
     };
 
     s.setup = function() {
