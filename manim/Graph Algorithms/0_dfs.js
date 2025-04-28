@@ -192,7 +192,7 @@ const Graph00 = function (s) {
     };
     let tnr;
     s.preload = function () {
-        tnr = s.loadFont('../lib/font/times.ttf');
+        tnr = s.loadFont('https://raw.githubusercontent.com/egeozgul/manim.js/refs/heads/main/manim/lib/font/times.ttf');
     };
     s.setup = function () {
         setup2D(s);
