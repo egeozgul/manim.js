@@ -2,4 +2,4 @@ This directory contains the modified version of the Manim.js library originally 
 
 
 
-(Click Here to see the Demo Page)[https://egeozgul.github.io/manim.js/manim/Graph%20Algorithms/graph.html]
+[Click Here to see the Demo Page](https://egeozgul.github.io/manim.js/manim/Graph%20Algorithms/graph.html)
