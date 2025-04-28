@@ -169,7 +169,7 @@ const Graph02 = function(s) {
     };
     let tnr;
     s.preload = function() {
-        tnr = s.loadFont('../lib/font/times.ttf');  // fixme: change this for github pages
+        tnr = s.loadFont('https://raw.githubusercontent.com/egeozgul/manim.js/refs/heads/main/manim/lib/font/times.ttf');  // fixme: change this for github pages
     };
     s.setup = function () {
         setup2D(s);
