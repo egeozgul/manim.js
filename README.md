@@ -21,3 +21,8 @@ Click on the follwoing links to run algortihm demo scripts:
 [Demo_8 cut](https://egeozgul.github.io/manim.js/manim/Graph%20Algorithms/demo_8.html)
 
 [Demo_Linear_regression](https://egeozgul.github.io/manim.js/manim/Linear%20Regression/part_1.html)
+
+[Demo_Linear_regression](https://egeozgul.github.io/manim.js/manim/Linear%20Regression/part_2.html)
+
+[Demo_Linear_regression](https://egeozgul.github.io/manim.js/manim/Linear%20Regression/part_3.html)
+
